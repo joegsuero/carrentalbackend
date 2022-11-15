@@ -27,7 +27,7 @@ public class ContractServiceImplementation implements ContractService {
     }
 
     @Override
-    public ContractDTO findById(String id) {
+    public ContractDTO findById(int id) {
         // TODO Auto-generated method stub
         if (contractRepository.findById(id).isPresent()) {
             return contractRepository.findById(id).get();
@@ -36,7 +36,7 @@ public class ContractServiceImplementation implements ContractService {
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(int id) {
         // TODO Auto-generated method stub
         contractRepository.deleteById(id);
     }

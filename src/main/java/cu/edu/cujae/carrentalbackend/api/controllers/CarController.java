@@ -14,44 +14,44 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cu.edu.cujae.carrentalbackend.core.dtos.ContractDTO;
-import cu.edu.cujae.carrentalbackend.services.ContractServices.ContractService;
+import cu.edu.cujae.carrentalbackend.core.dtos.CarDto;
+import cu.edu.cujae.carrentalbackend.services.CarServices.CarService;
 
 @RestController
-@RequestMapping("/api/v1/contracts")
-public class ContractController {
+@RequestMapping("/api/v1/cars")
+public class CarController {
 
     @Autowired
-    ContractService contractService;
+    CarService carService;
 
     @GetMapping("/")
-    public ResponseEntity<List<ContractDTO>> getContracts() {
-        List<ContractDTO> contractList = contractService.findAll();
+    public ResponseEntity<List<CarDto>> getContracts() {
+        List<CarDto> contractList = carService.findAll();
         return ResponseEntity.ok(contractList);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ContractDTO> getContractById(@PathVariable int id) throws SQLException {
-        ContractDTO contract = contractService.findById(id);
+    public ResponseEntity<CarDto> getContractById(@PathVariable int id) throws SQLException {
+        CarDto contract = carService.findById(id);
         return ResponseEntity.ok(contract);
     }
 
     @PostMapping("/")
-    public ResponseEntity<String> create(@RequestBody ContractDTO contract) throws SQLException {
-        contractService.save(contract);
-        return ResponseEntity.ok("Contract Created");
+    public ResponseEntity<String> create(@RequestBody CarDto contract) throws SQLException {
+        carService.save(contract);
+        return ResponseEntity.ok("Car Created");
     }
 
     @PutMapping("/")
-    public ResponseEntity<String> update(@RequestBody ContractDTO contract) throws SQLException {
-        contractService.save(contract);
-        return ResponseEntity.ok("Contract Updated");
+    public ResponseEntity<String> update(@RequestBody CarDto contract) throws SQLException {
+        carService.save(contract);
+        return ResponseEntity.ok("Car Updated");
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) throws SQLException {
-        contractService.delete(id);
-        return ResponseEntity.ok("Contract deleted");
+        carService.delete(id);
+        return ResponseEntity.ok("Car deleted");
     }
 
 }

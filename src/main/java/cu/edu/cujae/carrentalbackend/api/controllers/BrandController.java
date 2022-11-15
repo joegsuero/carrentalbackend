@@ -14,44 +14,44 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cu.edu.cujae.carrentalbackend.core.dtos.ContractDTO;
-import cu.edu.cujae.carrentalbackend.services.ContractServices.ContractService;
+import cu.edu.cujae.carrentalbackend.core.dtos.MarcaDto;
+import cu.edu.cujae.carrentalbackend.services.BrandServices.BrandService;
 
 @RestController
-@RequestMapping("/api/v1/contracts")
-public class ContractController {
+@RequestMapping("/api/v1/brands")
+public class BrandController {
 
     @Autowired
-    ContractService contractService;
+    BrandService brandService;
 
     @GetMapping("/")
-    public ResponseEntity<List<ContractDTO>> getContracts() {
-        List<ContractDTO> contractList = contractService.findAll();
+    public ResponseEntity<List<MarcaDto>> getContracts() {
+        List<MarcaDto> contractList = brandService.findAll();
         return ResponseEntity.ok(contractList);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ContractDTO> getContractById(@PathVariable int id) throws SQLException {
-        ContractDTO contract = contractService.findById(id);
+    public ResponseEntity<MarcaDto> getContractById(@PathVariable int id) throws SQLException {
+        MarcaDto contract = brandService.findById(id);
         return ResponseEntity.ok(contract);
     }
 
     @PostMapping("/")
-    public ResponseEntity<String> create(@RequestBody ContractDTO contract) throws SQLException {
-        contractService.save(contract);
-        return ResponseEntity.ok("Contract Created");
+    public ResponseEntity<String> create(@RequestBody MarcaDto contract) throws SQLException {
+        brandService.save(contract);
+        return ResponseEntity.ok("Brand Created");
     }
 
     @PutMapping("/")
-    public ResponseEntity<String> update(@RequestBody ContractDTO contract) throws SQLException {
-        contractService.save(contract);
-        return ResponseEntity.ok("Contract Updated");
+    public ResponseEntity<String> update(@RequestBody MarcaDto contract) throws SQLException {
+        brandService.save(contract);
+        return ResponseEntity.ok("Brand Updated");
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) throws SQLException {
-        contractService.delete(id);
-        return ResponseEntity.ok("Contract deleted");
+        brandService.delete(id);
+        return ResponseEntity.ok("Brand deleted");
     }
 
 }

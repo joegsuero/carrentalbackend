@@ -13,8 +13,8 @@ public interface ContractService {
 
     void save(ContractDTO contract);
 
-    ContractDTO findById(String id);
+    ContractDTO findById(int id);
 
-    void delete(String id);
+    void delete(int id);
 
 }

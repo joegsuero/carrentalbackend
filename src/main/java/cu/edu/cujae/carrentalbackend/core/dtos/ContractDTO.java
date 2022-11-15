@@ -12,8 +12,8 @@ import javax.persistence.Table;
 public class ContractDTO {
 
 	@Id
-	@Column(name = "contract_id")
-	private String id;
+	@Column(name = "contract_code")
+	private int id;
 
 	@Column(name = "contract_sign_date")
 	private Date signDate;
@@ -36,9 +36,10 @@ public class ContractDTO {
 	@Column(name = "contract_driver")
 	private int idDriver;
 
-	public ContractDTO(){};
+	public ContractDTO() {
+	};
 
-	public ContractDTO(String id, Date signDate, Date startDate, Date endingDate, int paymentMethod, int idTourist,
+	public ContractDTO(int id, Date signDate, Date startDate, Date endingDate, int paymentMethod, int idTourist,
 			int idCar, int idDriver) {
 		super();
 		this.id = id;
@@ -51,11 +52,11 @@ public class ContractDTO {
 		this.idDriver = idDriver;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
