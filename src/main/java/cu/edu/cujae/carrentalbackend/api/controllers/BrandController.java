@@ -25,26 +25,26 @@ public class BrandController {
     BrandService brandService;
 
     @GetMapping("/")
-    public ResponseEntity<List<MarcaDto>> getContracts() {
-        List<MarcaDto> contractList = brandService.findAll();
-        return ResponseEntity.ok(contractList);
+    public ResponseEntity<List<MarcaDto>> getBrands() {
+        List<MarcaDto> brandList = brandService.findAll();
+        return ResponseEntity.ok(brandList);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MarcaDto> getContractById(@PathVariable int id) throws SQLException {
-        MarcaDto contract = brandService.findById(id);
-        return ResponseEntity.ok(contract);
+    public ResponseEntity<MarcaDto> getBrandById(@PathVariable int id) throws SQLException {
+        MarcaDto brand = brandService.findById(id);
+        return ResponseEntity.ok(brand);
     }
 
     @PostMapping("/")
-    public ResponseEntity<String> create(@RequestBody MarcaDto contract) throws SQLException {
-        brandService.save(contract);
+    public ResponseEntity<String> create(@RequestBody MarcaDto brand) throws SQLException {
+        brandService.save(brand);
         return ResponseEntity.ok("Brand Created");
     }
 
     @PutMapping("/")
-    public ResponseEntity<String> update(@RequestBody MarcaDto contract) throws SQLException {
-        brandService.save(contract);
+    public ResponseEntity<String> update(@RequestBody MarcaDto brand) throws SQLException {
+        brandService.save(brand);
         return ResponseEntity.ok("Brand Updated");
     }
 

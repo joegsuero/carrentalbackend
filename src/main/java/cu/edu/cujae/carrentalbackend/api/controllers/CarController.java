@@ -25,26 +25,26 @@ public class CarController {
     CarService carService;
 
     @GetMapping("/")
-    public ResponseEntity<List<CarDto>> getContracts() {
-        List<CarDto> contractList = carService.findAll();
-        return ResponseEntity.ok(contractList);
+    public ResponseEntity<List<CarDto>> getCars() {
+        List<CarDto> CarList = carService.findAll();
+        return ResponseEntity.ok(CarList);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CarDto> getContractById(@PathVariable int id) throws SQLException {
-        CarDto contract = carService.findById(id);
-        return ResponseEntity.ok(contract);
+    public ResponseEntity<CarDto> getCarById(@PathVariable int id) throws SQLException {
+        CarDto car = carService.findById(id);
+        return ResponseEntity.ok(car);
     }
 
     @PostMapping("/")
-    public ResponseEntity<String> create(@RequestBody CarDto contract) throws SQLException {
-        carService.save(contract);
+    public ResponseEntity<String> create(@RequestBody CarDto car) throws SQLException {
+        carService.save(car);
         return ResponseEntity.ok("Car Created");
     }
 
     @PutMapping("/")
-    public ResponseEntity<String> update(@RequestBody CarDto contract) throws SQLException {
-        carService.save(contract);
+    public ResponseEntity<String> update(@RequestBody CarDto car) throws SQLException {
+        carService.save(car);
         return ResponseEntity.ok("Car Updated");
     }
 
